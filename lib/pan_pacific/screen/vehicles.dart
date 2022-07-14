@@ -14,6 +14,7 @@ class VihiclesScreen extends StatefulWidget {
 
 class _VihiclesScreenState extends State<VihiclesScreen> {
   bool _customTileExpanded = false;
+  bool _openMenu = false;
 
   @override
   Widget build(BuildContext context) {
@@ -306,31 +307,169 @@ class _VihiclesScreenState extends State<VihiclesScreen> {
               ///   ------------------  Tablet ---------------------
 
               else if (Responsive.isTablet(context))
-                Container(
-                  height: 80.h,
-                  width: 100.w,
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                      fit: BoxFit.cover,
-                      image: AssetImage(Images.background),
+                Column(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+                      child: Row(
+                        children: [
+                          Image.asset(Images.panPacific, width: 200),
+                          Spacer(),
+                          IconButton(
+                            onPressed: () {
+                              setState(() {
+                                _openMenu = !_openMenu;
+                              });
+                            },
+                            icon: _openMenu
+                                ? const Icon(
+                                    Icons.close,
+                                  )
+                                : const Icon(
+                                    Icons.menu,
+                                  ),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      // Padding(
-                      //   padding: EdgeInsets.only(top: 3.h, left: 21.w),
-                      //   child: Row(
-                      //     children: [
-                      //       Image.asset(Images.panPacific, height: 8.h),
-                      //       _headerText("Home"),
-                      //       _headerText("Vehicles"),
-                      //       _headerText("Promotions"),
-                      //     ],
-                      //   ),
-                      // ),
-                    ],
-                  ),
+                    Stack(
+                      clipBehavior: Clip.none,
+                      children: [
+                        Container(
+                          height: 80.h,
+                          width: 100.w,
+                          decoration: const BoxDecoration(
+                            image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: AssetImage(Images.background),
+                            ),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              // Padding(
+                              //   padding: EdgeInsets.only(top: 3.h, left: 21.w),
+                              //   child: Row(
+                              //     children: [
+                              //       Image.asset(Images.panPacific, height: 8.h),
+                              //       _headerText("Home"),
+                              //       _headerText("Vehicles"),
+                              //       _headerText("Promotions"),
+                              //     ],
+                              //   ),
+                              // ),
+                            ],
+                          ),
+                        ),
+                        Positioned(
+                          child: _openMenu
+                              ? Container(
+                                  // height: 500,
+                                  // width: 1000,
+                                  color: Colors.white,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(0),
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: const [
+                                        Divider(
+                                          // height: 0,
+                                          thickness: 1.5,
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.only(left: 20),
+                                          child: CText(
+                                            "HOME",
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 17,
+                                          ),
+                                        ),
+                                        Divider(
+                                          thickness: 1.5,
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.only(left: 20),
+                                          child: CText(
+                                            "VEHICLES",
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 17,
+                                          ),
+                                        ),
+                                        Divider(
+                                          thickness: 1.5,
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.only(left: 20),
+                                          child: CText(
+                                            "PROMOTIONS",
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 17,
+                                          ),
+                                        ),
+                                        Divider(
+                                          thickness: 1.5,
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.only(left: 20),
+                                          child: CText(
+                                            "SERVICING",
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 17,
+                                          ),
+                                        ),
+                                        Divider(
+                                          thickness: 1.5,
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.only(left: 20),
+                                          child: CText(
+                                            "ABOUT",
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 17,
+                                          ),
+                                        ),
+                                        Divider(
+                                          thickness: 1.5,
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.only(left: 20),
+                                          child: CText(
+                                            "BLOG",
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 17,
+                                          ),
+                                        ),
+                                        Divider(
+                                          thickness: 1.5,
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.only(left: 20),
+                                          child: CText(
+                                            "CONTACT",
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 17,
+                                          ),
+                                        ),
+                                        Divider(
+                                          height: 0,
+                                          thickness: 1.5,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                )
+                              : SizedBox(),
+                        ),
+                      ],
+                    ),
+                  ],
                 )
 
               ///   ------------------  Mobile ---------------------
