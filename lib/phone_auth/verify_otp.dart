@@ -3,7 +3,6 @@ import 'dart:developer';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:webapp/homepage.dart';
 
 class VerifyOtpScreen extends StatefulWidget {
   final String verificationId;
@@ -26,7 +25,7 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
       UserCredential userCredential = await FirebaseAuth.instance.signInWithCredential(credential);
       if (userCredential.user != null) {
         Navigator.popUntil(context, (route) => route.isFirst);
-        Navigator.pushReplacement(context, CupertinoPageRoute(builder: (context) => HomePage()));
+        // Navigator.pushReplacement(context, CupertinoPageRoute(builder: (context) => HomePage()));
       }
     } on FirebaseAuthException catch (ex) {
       log(ex.code.toString());

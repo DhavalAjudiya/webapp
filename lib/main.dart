@@ -1,6 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
+import 'package:webapp/pan_pacific/screen/vehicles.dart';
 import 'package:webapp/phone_auth/sign_in_with_phone.dart';
 
 Future<void> main() async {
@@ -18,7 +20,7 @@ Future<void> main() async {
   //     ),
   //   );
   // } else {
-  await Firebase.initializeApp();
+  // await Firebase.initializeApp();
   // }
 
   runApp(const MyApp());
@@ -30,8 +32,13 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: SignInWithPhone(),
+    return Sizer(
+      builder: (BuildContext context, Orientation orientation, DeviceType deviceType) {
+        return const MaterialApp(
+          debugShowCheckedModeBanner: false,
+          home: VihiclesScreen(),
+        );
+      },
     );
   }
 }
