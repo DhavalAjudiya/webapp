@@ -72,11 +72,6 @@ class _VihiclesScreenState extends State<VihiclesScreen> {
 
                             /// ---Select  vans  ----
                             _selectVan(),
-
-                            const SizedBox(height: 40),
-
-                            /// ---Select  Truck  ----
-                            _selectTruck(),
                             const SizedBox(height: 40),
                             const CText(
                               "Please note that the images of vehicles above are for illustration purposes only and",
@@ -309,165 +304,265 @@ class _VihiclesScreenState extends State<VihiclesScreen> {
               else if (Responsive.isTablet(context))
                 Column(
                   children: [
-                    Padding(
-                      padding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
-                      child: Row(
-                        children: [
-                          Image.asset(Images.panPacific, width: 200),
-                          Spacer(),
-                          IconButton(
-                            onPressed: () {
-                              setState(() {
-                                _openMenu = !_openMenu;
-                              });
-                            },
-                            icon: _openMenu
-                                ? const Icon(
-                                    Icons.close,
-                                  )
-                                : const Icon(
-                                    Icons.menu,
-                                  ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Stack(
-                      clipBehavior: Clip.none,
-                      children: [
-                        Container(
-                          height: 80.h,
-                          width: 100.w,
-                          decoration: const BoxDecoration(
-                            image: DecorationImage(
-                              fit: BoxFit.cover,
-                              image: AssetImage(Images.background),
+                    ///  ------ Header Row --------------
+
+                    _headerRowTablet(),
+
+                    ///  ------ drawer --------------
+                    _drawer(),
+
+                    /// --- companyLogo ----
+                    _valuedAndCustomersRow(),
+
+                    /// --- vans & lorries Containers ----
+                    Container(
+                      alignment: Alignment.center,
+                      child: SizedBox(
+                        width: 1100,
+                        child: Column(
+                          children: [
+                            /// --- Official leasing and trade-in partner ----
+
+                            _officialLeasingAndTradePartner(),
+                            const SizedBox(height: 27),
+
+                            /// --- Official trade-in partner ----
+
+                            _officialTradePartner(),
+                            const SizedBox(height: 40),
+
+                            /// ---Select  vans  ----
+                            _selectVan(),
+
+                            const SizedBox(height: 40),
+
+                            const SizedBox(height: 40),
+                            const CText(
+                              "Please note that the images of vehicles above are for illustration purposes only and",
+                              fontSize: 16,
+                              color: Color(0xff9e9e9e),
+                              fontWeight: FontWeight.w700,
+                              letterSpacing: 0.4,
                             ),
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              // Padding(
-                              //   padding: EdgeInsets.only(top: 3.h, left: 21.w),
-                              //   child: Row(
-                              //     children: [
-                              //       Image.asset(Images.panPacific, height: 8.h),
-                              //       _headerText("Home"),
-                              //       _headerText("Vehicles"),
-                              //       _headerText("Promotions"),
-                              //     ],
-                              //   ),
-                              // ),
-                            ],
-                          ),
-                        ),
-                        Positioned(
-                          child: _openMenu
-                              ? Container(
-                                  // height: 500,
-                                  // width: 1000,
-                                  color: Colors.white,
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(0),
-                                    child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: const [
-                                        Divider(
-                                          // height: 0,
-                                          thickness: 1.5,
-                                        ),
-                                        Padding(
-                                          padding: EdgeInsets.only(left: 20),
-                                          child: CText(
-                                            "HOME",
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 17,
-                                          ),
-                                        ),
-                                        Divider(
-                                          thickness: 1.5,
-                                        ),
-                                        Padding(
-                                          padding: EdgeInsets.only(left: 20),
-                                          child: CText(
-                                            "VEHICLES",
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 17,
-                                          ),
-                                        ),
-                                        Divider(
-                                          thickness: 1.5,
-                                        ),
-                                        Padding(
-                                          padding: EdgeInsets.only(left: 20),
-                                          child: CText(
-                                            "PROMOTIONS",
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 17,
-                                          ),
-                                        ),
-                                        Divider(
-                                          thickness: 1.5,
-                                        ),
-                                        Padding(
-                                          padding: EdgeInsets.only(left: 20),
-                                          child: CText(
-                                            "SERVICING",
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 17,
-                                          ),
-                                        ),
-                                        Divider(
-                                          thickness: 1.5,
-                                        ),
-                                        Padding(
-                                          padding: EdgeInsets.only(left: 20),
-                                          child: CText(
-                                            "ABOUT",
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 17,
-                                          ),
-                                        ),
-                                        Divider(
-                                          thickness: 1.5,
-                                        ),
-                                        Padding(
-                                          padding: EdgeInsets.only(left: 20),
-                                          child: CText(
-                                            "BLOG",
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 17,
-                                          ),
-                                        ),
-                                        Divider(
-                                          thickness: 1.5,
-                                        ),
-                                        Padding(
-                                          padding: EdgeInsets.only(left: 20),
-                                          child: CText(
-                                            "CONTACT",
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 17,
-                                          ),
-                                        ),
-                                        Divider(
-                                          height: 0,
-                                          thickness: 1.5,
+                            const SizedBox(height: 10),
+                            const CText(
+                              "only some of our short-term rental vehicles feature our custom decal design.",
+                              fontSize: 16,
+                              letterSpacing: 0.4,
+                              color: Color(0xff9e9e9e),
+                              fontWeight: FontWeight.w700,
+                            ),
+                            const SizedBox(height: 100),
+
+                            /// ---------- Frequently Asked questions -------
+                            const CText(
+                              "Frequently Asked questions",
+                              fontSize: 25,
+                              letterSpacing: 0.4,
+                              color: Color(0xff3c88bb),
+                              fontWeight: FontWeight.bold,
+                            ),
+                            const SizedBox(height: 50),
+                            Wrap(
+                              spacing: 80,
+                              runSpacing: 10,
+                              // mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                ///  ------- Frequently Asked questions---------
+                                _askQuestion(
+                                  "Do I need to pay a deposit?",
+                                  "Deposits vary according to the duration of the lease and type of\n"
+                                      "vehicle. Typically, for short term rentals, deposits range \$300 –\n"
+                                      "\$500, and for longer-term rentals, deposits tend to range from \$800\n"
+                                      "– 1 month of rental. We accept cash and credit card for deposit\n"
+                                      "payments.",
+                                ),
+                                Container(
+                                  // height: 50,
+                                  width: 530,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(5),
+                                    boxShadow: const [
+                                      BoxShadow(
+                                        color: Colors.black12,
+                                        blurRadius: 10,
+                                        offset: Offset(1, 2),
+                                      ),
+                                    ],
+                                  ),
+                                  child: Theme(
+                                    data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+                                    child: ExpansionTile(
+                                      childrenPadding: EdgeInsets.symmetric(horizontal: 5),
+                                      title: const CText(
+                                        "When collecting, what documents will I need?",
+                                        fontSize: 17,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black54,
+                                      ),
+                                      trailing: Icon(
+                                        _customTileExpanded ? Icons.remove : Icons.add,
+                                        color: Color(0xff3c88bb),
+                                        size: 35,
+                                      ),
+                                      children: [
+                                        Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            const CText(
+                                              "You need to bring the following documents:",
+                                              fontSize: 16,
+                                              height: 1.5,
+                                              letterSpacing: 0.5,
+                                              color: Color(0xff444444),
+                                            ),
+                                            Row(
+                                              children: const [
+                                                Icon(Icons.circle, size: 10),
+                                                SizedBox(width: 10),
+                                                CText(
+                                                  "NRIC",
+                                                  fontSize: 15,
+                                                  height: 1.5,
+                                                  letterSpacing: 0.5,
+                                                  color: Color(0xff444444),
+                                                ),
+                                              ],
+                                            ),
+                                            Row(
+                                              children: const [
+                                                Icon(Icons.circle, size: 10),
+                                                SizedBox(width: 10),
+                                                CText(
+                                                  "Driver’s Licence",
+                                                  fontSize: 15,
+                                                  height: 1.5,
+                                                  letterSpacing: 0.5,
+                                                  color: Color(0xff444444),
+                                                ),
+                                              ],
+                                            ),
+                                            Row(
+                                              children: const [
+                                                Icon(Icons.circle, size: 10),
+                                                SizedBox(width: 10),
+                                                CText(
+                                                  "ACRA (If required – when registering under a company)",
+                                                  fontSize: 15,
+                                                  height: 1.5,
+                                                  letterSpacing: 0.5,
+                                                  color: Color(0xff444444),
+                                                ),
+                                              ],
+                                            ),
+                                            const SizedBox(height: 10),
+                                          ],
                                         ),
                                       ],
+                                      onExpansionChanged: (bool expanded) {
+                                        setState(() => _customTileExpanded = expanded);
+                                      },
                                     ),
                                   ),
-                                )
-                              : SizedBox(),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 20),
+
+                            Wrap(
+                              spacing: 80,
+                              runSpacing: 10,
+                              children: [
+                                ///  ------- Frequently Asked questions---------
+                                _askQuestion(
+                                  "Do you allow rental for personal usage?",
+                                  "Yes, we offer rental on vehicles for personal and company usage.",
+                                ),
+                                _askQuestion(
+                                  "Can multiple people drive the vehicle?",
+                                  "If the vehicle is registered under a company, yes, any employee with\n"
+                                      "a valid driving license can drive the vehicle. However, for vehicles\n"
+                                      "that are rented under an individual’s name, only that person isn"
+                                      "allowed to drive.",
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 20),
+
+                            Wrap(
+                              spacing: 80,
+                              runSpacing: 10,
+                              children: [
+                                ///  ------- Frequently Asked questions---------
+                                _askQuestion(
+                                  "What is the minimum lease period?",
+                                  "24 Hours. For vehicles due outside office hours (Monday – Friday,\n"
+                                      "9.30pm – 6.30pm), The rental period will include these days/hours.\n"
+                                      "For rentals under 24 Hours, a full day fee will be charged.",
+                                ),
+                                _askQuestion(
+                                  "How much do you charge for rental?",
+                                  "We are usually below or at market rate, but we don’t show pricing\n"
+                                      "because it can differ based on the length of the lease, any current\n"
+                                      "promotions, and various other variables. If you get in touch we’ll be\n"
+                                      "able to give you a no-obligation quote.",
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 40),
+                            RichText(
+                              text: const TextSpan(
+                                  text: 'Have more questions? just drop us an',
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    height: 1.5,
+                                    // fontWeight: FontWeight.bold,
+                                    fontSize: 17,
+                                  ),
+                                  children: [
+                                    TextSpan(
+                                        text: ' email',
+                                        style: TextStyle(
+                                          height: 1.5,
+                                          color: Color(0xff3c88bb),
+                                          fontWeight: FontWeight.w400,
+                                          fontSize: 17,
+                                        )),
+                                    TextSpan(
+                                        text: ' or',
+                                        style: TextStyle(
+                                          height: 1.5,
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.w400,
+                                          fontSize: 17,
+                                        ))
+                                  ]),
+                            ),
+                            RichText(
+                              text: const TextSpan(
+                                  text: 'give us a call',
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    height: 1.5,
+                                    // fontWeight: FontWeight.bold,
+                                    fontSize: 17,
+                                  ),
+                                  children: [
+                                    TextSpan(
+                                        text: ' +65 8482 3003',
+                                        style: TextStyle(
+                                          height: 1.5,
+                                          color: Color(0xff3c88bb),
+                                          fontWeight: FontWeight.w400,
+                                          fontSize: 17,
+                                        )),
+                                  ]),
+                            ),
+                            const SizedBox(height: 120),
+                          ],
                         ),
-                      ],
+                      ),
                     ),
                   ],
                 )
@@ -475,35 +570,276 @@ class _VihiclesScreenState extends State<VihiclesScreen> {
               ///   ------------------  Mobile ---------------------
 
               else
-                Container(
-                  height: 80.h,
-                  width: 100.w,
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                      fit: BoxFit.cover,
-                      image: AssetImage(Images.background),
+                Column(
+                  children: [
+                    ///  ------ Header Row --------------
+
+                    _headerRowTablet(),
+
+                    ///  ------ drawer --------------
+                    _drawer(),
+
+                    /// --- companyLogo ----
+                    _valuedAndCustomersRow(),
+
+                    /// --- vans & lorries Containers ----
+                    Container(
+                      alignment: Alignment.center,
+                      child: SizedBox(
+                        width: 1100,
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 20),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              /// --- Official leasing and trade-in partner ----
+
+                              _officialLeasingAndTradePartnerMobile(),
+                              const SizedBox(height: 30),
+
+                              /// --- Official trade-in partner ----
+
+                              const SizedBox(height: 40),
+
+                              /// ---Select  vans  ----
+                              _selectVanMobile(),
+
+                              const SizedBox(height: 40),
+
+                              /// ---Select  Truck  ----
+                              _selectTruckMobile(),
+                              const SizedBox(height: 40),
+                              const CText(
+                                "Please note that the images of vehicles above are for illustration purposes only and",
+                                fontSize: 16,
+                                color: Color(0xff9e9e9e),
+                                fontWeight: FontWeight.w700,
+                                letterSpacing: 0.4,
+                              ),
+                              const SizedBox(height: 10),
+                              const CText(
+                                "only some of our short-term rental vehicles feature our custom decal design.",
+                                fontSize: 16,
+                                letterSpacing: 0.4,
+                                color: Color(0xff9e9e9e),
+                                fontWeight: FontWeight.w700,
+                              ),
+                              const SizedBox(height: 100),
+
+                              /// ---------- Frequently Asked questions -------
+                              const CText(
+                                "Frequently Asked questions",
+                                fontSize: 25,
+                                letterSpacing: 0.4,
+                                color: Color(0xff3c88bb),
+                                fontWeight: FontWeight.bold,
+                              ),
+                              const SizedBox(height: 50),
+                              Column(
+                                // mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                children: [
+                                  ///  ------- Frequently Asked questions---------
+                                  _askQuestion(
+                                    "Do I need to pay a deposit?",
+                                    "Deposits vary according to the duration of the lease and type of\n"
+                                        "vehicle. Typically, for short term rentals, deposits range \$300 –\n"
+                                        "\$500, and for longer-term rentals, deposits tend to range from \$800\n"
+                                        "– 1 month of rental. We accept cash and credit card for deposit\n"
+                                        "payments.",
+                                  ),
+                                  const SizedBox(height: 30),
+
+                                  Container(
+                                    // height: 50,
+                                    width: 530,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(5),
+                                      boxShadow: const [
+                                        BoxShadow(
+                                          color: Colors.black12,
+                                          blurRadius: 10,
+                                          offset: Offset(1, 2),
+                                        ),
+                                      ],
+                                    ),
+                                    child: Theme(
+                                      data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+                                      child: ExpansionTile(
+                                        childrenPadding: EdgeInsets.symmetric(horizontal: 5),
+                                        title: const CText(
+                                          "When collecting, what documents will I need?",
+                                          fontSize: 17,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.black54,
+                                        ),
+                                        trailing: Icon(
+                                          _customTileExpanded ? Icons.remove : Icons.add,
+                                          color: Color(0xff3c88bb),
+                                          size: 35,
+                                        ),
+                                        children: [
+                                          Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              const CText(
+                                                "You need to bring the following documents:",
+                                                fontSize: 16,
+                                                height: 1.5,
+                                                letterSpacing: 0.5,
+                                                color: Color(0xff444444),
+                                              ),
+                                              Row(
+                                                children: const [
+                                                  Icon(Icons.circle, size: 10),
+                                                  SizedBox(width: 10),
+                                                  CText(
+                                                    "NRIC",
+                                                    fontSize: 15,
+                                                    height: 1.5,
+                                                    letterSpacing: 0.5,
+                                                    color: Color(0xff444444),
+                                                  ),
+                                                ],
+                                              ),
+                                              Row(
+                                                children: const [
+                                                  Icon(Icons.circle, size: 10),
+                                                  SizedBox(width: 10),
+                                                  CText(
+                                                    "Driver’s Licence",
+                                                    fontSize: 15,
+                                                    height: 1.5,
+                                                    letterSpacing: 0.5,
+                                                    color: Color(0xff444444),
+                                                  ),
+                                                ],
+                                              ),
+                                              Row(
+                                                children: const [
+                                                  Icon(Icons.circle, size: 10),
+                                                  SizedBox(width: 10),
+                                                  CText(
+                                                    "ACRA (If required – when registering under a company)",
+                                                    fontSize: 15,
+                                                    height: 1.5,
+                                                    letterSpacing: 0.5,
+                                                    color: Color(0xff444444),
+                                                  ),
+                                                ],
+                                              ),
+                                              const SizedBox(height: 10),
+                                            ],
+                                          ),
+                                        ],
+                                        onExpansionChanged: (bool expanded) {
+                                          setState(() => _customTileExpanded = expanded);
+                                        },
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: 30),
+
+                              Column(
+                                children: [
+                                  ///  ------- Frequently Asked questions---------
+                                  _askQuestion(
+                                    "Do you allow rental for personal usage?",
+                                    "Yes, we offer rental on vehicles for personal and company usage.",
+                                  ),
+                                  const SizedBox(height: 30),
+
+                                  _askQuestion(
+                                    "Can multiple people drive the vehicle?",
+                                    "If the vehicle is registered under a company, yes, any employee with\n"
+                                        "a valid driving license can drive the vehicle. However, for vehicles\n"
+                                        "that are rented under an individual’s name, only that person isn"
+                                        "allowed to drive.",
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: 20),
+
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                children: [
+                                  ///  ------- Frequently Asked questions---------
+                                  _askQuestion(
+                                    "What is the minimum lease period?",
+                                    "24 Hours. For vehicles due outside office hours (Monday – Friday,\n"
+                                        "9.30pm – 6.30pm), The rental period will include these days/hours.\n"
+                                        "For rentals under 24 Hours, a full day fee will be charged.",
+                                  ),
+                                  const SizedBox(height: 30),
+
+                                  _askQuestion(
+                                    "How much do you charge for rental?",
+                                    "We are usually below or at market rate, but we don’t show pricing\n"
+                                        "because it can differ based on the length of the lease, any current\n"
+                                        "promotions, and various other variables. If you get in touch we’ll be\n"
+                                        "able to give you a no-obligation quote.",
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: 40),
+                              RichText(
+                                text: const TextSpan(
+                                    text: 'Have more questions? just drop us an',
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      height: 1.5,
+                                      // fontWeight: FontWeight.bold,
+                                      fontSize: 17,
+                                    ),
+                                    children: [
+                                      TextSpan(
+                                          text: ' email',
+                                          style: TextStyle(
+                                            height: 1.5,
+                                            color: Color(0xff3c88bb),
+                                            fontWeight: FontWeight.w400,
+                                            fontSize: 17,
+                                          )),
+                                      TextSpan(
+                                          text: ' or',
+                                          style: TextStyle(
+                                            height: 1.5,
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.w400,
+                                            fontSize: 17,
+                                          ))
+                                    ]),
+                              ),
+                              RichText(
+                                text: const TextSpan(
+                                    text: 'give us a call',
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      height: 1.5,
+                                      // fontWeight: FontWeight.bold,
+                                      fontSize: 17,
+                                    ),
+                                    children: [
+                                      TextSpan(
+                                          text: ' +65 8482 3003',
+                                          style: TextStyle(
+                                            height: 1.5,
+                                            color: Color(0xff3c88bb),
+                                            fontWeight: FontWeight.w400,
+                                            fontSize: 17,
+                                          )),
+                                    ]),
+                              ),
+                              const SizedBox(height: 120),
+                            ],
+                          ),
+                        ),
+                      ),
                     ),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      // Padding(
-                      //   padding: EdgeInsets.only(top: 3.h, left: 21.w),
-                      //   child: Row(
-                      //     children: [
-                      //       Image.asset(
-                      //         Images.panPacific,
-                      //         width: 20.w,
-                      //       ),
-                      //       _headerText("Home"),
-                      //       _headerText("Vehicles"),
-                      //       _headerText("Promotions"),
-                      //     ],
-                      //   ),
-                      // ),
-                    ],
-                  ),
-                ),
+                  ],
+                )
             ],
           ),
         ),
@@ -618,22 +954,19 @@ class _VihiclesScreenState extends State<VihiclesScreen> {
                   width: 1290.w,
                   height: 80,
                   color: Color(0xff173154),
-                  child: Row(
+                  child: Wrap(
+                    spacing: 20,
+                    runSpacing: 30,
                     children: [
-                      SizedBox(width: 5.6.w),
-                      Row(
-                        children: [
-                          _companyLogo(Images.aramex),
-                          SizedBox(width: 1.3.w),
-                          _companyLogo(Images.bosch),
-                          SizedBox(width: 1.3.w),
-                          _companyLogo(Images.cw),
-                          SizedBox(width: 1.3.w),
-                          _companyLogo(Images.smrt),
-                          SizedBox(width: 1.3.w),
-                          _companyLogo(Images.sp),
-                        ],
-                      ),
+                      _companyLogo(Images.aramex),
+                      SizedBox(width: 1.3.w),
+                      _companyLogo(Images.bosch),
+                      SizedBox(width: 1.3.w),
+                      _companyLogo(Images.cw),
+                      SizedBox(width: 1.3.w),
+                      _companyLogo(Images.smrt),
+                      SizedBox(width: 1.3.w),
+                      _companyLogo(Images.sp),
                     ],
                   ),
                 ),
@@ -647,95 +980,101 @@ class _VihiclesScreenState extends State<VihiclesScreen> {
 
   /// --- Official leasing and trade-in partner ----
   _officialLeasingAndTradePartner() {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.center,
+    return Wrap(
+      spacing: 100,
+      runSpacing: 30,
       children: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            RichText(
-              text: const TextSpan(
-                  text: 'Pan Pacific Van & Truck Leasing offer a selection of top quality',
-                  style: TextStyle(
-                    color: Colors.black,
-                    height: 1.5,
-                    // fontWeight: FontWeight.bold,
-                    fontSize: 17,
-                  ),
-                  children: [
-                    TextSpan(
-                        text: ' commercial vans & lorries',
-                        style: TextStyle(
-                          height: 1.5,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 17,
-                        ))
-                  ]),
-            ),
-            const CText(
-              "as part of our extensive rental fleet. With vehicles of all different sizes, shapes and of\n"
-              "varying powers, you can select the perfect vehicle for your needs. All of our vehicles are",
-              color: Colors.black,
-              height: 1.5,
-
-              // fontWeight: FontWeight.bold,
-              fontSize: 17,
-            ),
-            RichText(
-              text: const TextSpan(
-                  text: 'well maintained, and we offer',
-                  style: TextStyle(
-                    height: 1.5,
-
-                    color: Colors.black,
-                    // fontWeight: FontWeight.bold,
-                    fontSize: 17,
-                  ),
-                  children: [
-                    TextSpan(
-                        text: ' short, mid and long term rental',
-                        style: TextStyle(
-                          height: 1.5,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 17,
-                        )),
-                    TextSpan(
-                      text: ' options for both',
-                      style: TextStyle(
-                        color: Colors.black,
-                        height: 1.5,
-
-                        // fontWeight: FontWeight.bold,
-                        fontSize: 17,
-                      ),
+        SizedBox(
+          width: 700,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              RichText(
+                text: const TextSpan(
+                    text: 'Pan Pacific Van & Truck Leasing offer a selection of top quality',
+                    style: TextStyle(
+                      color: Colors.black,
+                      height: 1.5,
+                      // fontWeight: FontWeight.bold,
+                      fontSize: 17,
                     ),
-                  ]),
-            ),
-            const CText(
-              "individuals and companies.",
-              color: Colors.black,
-              height: 1.5,
-              fontWeight: FontWeight.bold,
-              fontSize: 17,
-            ),
-          ],
+                    children: [
+                      TextSpan(
+                          text: ' commercial vans & lorries',
+                          style: TextStyle(
+                            height: 1.5,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 17,
+                          ))
+                    ]),
+              ),
+              const CText(
+                "as part of our extensive rental fleet. With vehicles of all different sizes, shapes and of"
+                "varying powers, you can select the perfect vehicle for your needs. All of our vehicles are",
+                color: Colors.black,
+                height: 1.5,
+
+                // fontWeight: FontWeight.bold,
+                fontSize: 17,
+              ),
+              RichText(
+                text: const TextSpan(
+                    text: 'well maintained, and we offer',
+                    style: TextStyle(
+                      height: 1.5,
+
+                      color: Colors.black,
+                      // fontWeight: FontWeight.bold,
+                      fontSize: 17,
+                    ),
+                    children: [
+                      TextSpan(
+                          text: ' short, mid and long term rental',
+                          style: TextStyle(
+                            height: 1.5,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 17,
+                          )),
+                      TextSpan(
+                        text: ' options for both',
+                        style: TextStyle(
+                          color: Colors.black,
+                          height: 1.5,
+
+                          // fontWeight: FontWeight.bold,
+                          fontSize: 17,
+                        ),
+                      ),
+                    ]),
+              ),
+              const CText(
+                "individuals and companies.",
+                color: Colors.black,
+                height: 1.5,
+                fontWeight: FontWeight.bold,
+                fontSize: 17,
+              ),
+            ],
+          ),
         ),
-        const SizedBox(width: 135),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const CText(
-              "Official leasing and trade-in partner",
-              color: Colors.black,
-              fontWeight: FontWeight.bold,
-              fontSize: 18,
-            ),
-            const SizedBox(height: 20),
-            Image.asset(Images.borneo),
-          ],
+        // const SizedBox(width: 135),
+        SizedBox(
+          width: 300,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const CText(
+                "Official leasing and trade-in partner",
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+              ),
+              const SizedBox(height: 20),
+              Image.asset(Images.borneo),
+            ],
+          ),
         ),
       ],
     );
@@ -743,42 +1082,47 @@ class _VihiclesScreenState extends State<VihiclesScreen> {
 
   /// --- Official trade-in partner ----
   _officialTradePartner() {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.center,
+    return Wrap(
+      spacing: 100,
+      runSpacing: 30,
       children: [
-        const CText(
-          "Vehicle images below are for representation only. We offer customisation services, and\n"
-          "lorries can come in various configurations, such as tailgate, canopy and box. Please review\n"
-          "our vehicles below for more information, and get in touch should you have any questions.",
-          color: Colors.black,
-          height: 1.5,
-          // fontWeight: FontWeight.bold,
-          fontSize: 17,
+        const SizedBox(
+          width: 700,
+          child: CText(
+            "Vehicle images below are for representation only. We offer customisation services, and\n"
+            "lorries can come in various configurations, such as tailgate, canopy and box. Please review\n"
+            "our vehicles below for more information, and get in touch should you have any questions.",
+            color: Colors.black,
+            height: 1.5,
+            // fontWeight: FontWeight.bold,
+            fontSize: 17,
+          ),
         ),
-        const SizedBox(width: 130),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const CText(
-              "Official trade-in partner",
-              color: Colors.black,
-              fontWeight: FontWeight.bold,
-              fontSize: 18,
-            ),
-            const SizedBox(height: 15),
-            Image.asset(Images.tanchong, width: 80),
-          ],
+        SizedBox(
+          width: 300,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const CText(
+                "Official trade-in partner",
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+              ),
+              const SizedBox(height: 15),
+              Image.asset(Images.tanchong, width: 80),
+            ],
+          ),
         ),
-        const SizedBox(width: 95),
       ],
     );
   }
 
   /// ---Select  vans  ----
   _selectVan() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Wrap(
+      spacing: 50,
+      runSpacing: 20,
       children: [
         _selectVanContainer(
           "Toyota Hiace",
@@ -798,15 +1142,6 @@ class _VihiclesScreenState extends State<VihiclesScreen> {
           "Light &\nCompact",
           Images.nissan200,
         ),
-      ],
-    );
-  }
-
-  /// ---Select  Truck  ----
-  _selectTruck() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
         _selectTruckContainer(
           "Toyota Dyna",
           "Diesel",
@@ -857,7 +1192,6 @@ class _VihiclesScreenState extends State<VihiclesScreen> {
           childrenPadding: EdgeInsets.symmetric(horizontal: 5),
           title: CText(
             question,
-            // 'Do I need to pay a deposit?',
             fontSize: 17,
             fontWeight: FontWeight.bold,
             color: Colors.black54,
@@ -874,11 +1208,6 @@ class _VihiclesScreenState extends State<VihiclesScreen> {
                 // SizedBox(height: 2),
                 CText(
                   answer,
-                  // "Deposits vary according to the duration of the lease and type of\n"
-                  // "vehicle. Typically, for short term rentals, deposits range \$300 –\n"
-                  // "\$500, and for longer-term rentals, deposits tend to range from \$800\n"
-                  // "– 1 month of rental. We accept cash and credit card for deposit\n"
-                  // "payments.",
                   fontSize: 16,
                   height: 1.5,
                   letterSpacing: 0.5,
@@ -1152,6 +1481,556 @@ class _VihiclesScreenState extends State<VihiclesScreen> {
           ],
         ),
       ),
+    );
+  }
+
+  ///   --------  Tablet ---------
+  _headerRowTablet() {
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+      child: Row(
+        children: [
+          Image.asset(Images.panPacific, width: 200),
+          Spacer(),
+          IconButton(
+            // splashColor: Cols,
+            onPressed: () {
+              setState(() {
+                _openMenu = !_openMenu;
+              });
+            },
+            icon: _openMenu
+                ? const Icon(
+                    Icons.close,
+                  )
+                : const Icon(
+                    Icons.menu,
+                  ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  _drawer() {
+    return Stack(
+      clipBehavior: Clip.none,
+      children: [
+        Container(
+          height: 80.h,
+          width: 100.w,
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              fit: BoxFit.cover,
+              image: AssetImage(Images.background),
+            ),
+          ),
+          child: _headerColumnTablet(),
+        ),
+        Positioned(
+          child: _openMenu
+              ? Container(
+                  // height: 500,
+                  // width: 1000,
+                  color: Colors.white,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 15),
+                        child: Container(
+                          height: 1,
+                          color: Colors.black26,
+                        ),
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.only(left: 20),
+                        child: CText(
+                          "HOME",
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 15),
+                        child: Container(
+                          height: 1,
+                          color: Colors.black26,
+                        ),
+                      ),
+                      Theme(
+                        data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+                        child: ExpansionTile(
+                          title: const CText(
+                            "VEHICLES",
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                          ),
+                          trailing: const Icon(
+                            Icons.keyboard_arrow_down,
+                            size: 30,
+                          ),
+                          children: [
+                            Container(
+                              height: 1,
+                              color: Colors.black26,
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 15),
+                              child: Align(
+                                alignment: Alignment.centerLeft,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: const [
+                                    CText(
+                                      "All Vehicles",
+                                      fontSize: 12,
+                                      height: 3,
+                                      // letterSpacing: 0.5,
+                                      color: Color(0xff444444),
+                                    ),
+                                    CText(
+                                      "Van Rental",
+                                      fontSize: 12,
+                                      height: 3,
+                                      letterSpacing: 0.5,
+                                      color: Color(0xff444444),
+                                    ),
+                                    CText(
+                                      "Lorry Rental",
+                                      fontSize: 12,
+                                      height: 3,
+                                      letterSpacing: 0.5,
+                                      color: Color(0xff444444),
+                                    ),
+                                    SizedBox(height: 6),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        height: 1,
+                        color: Colors.black26,
+                      ),
+                      Theme(
+                        data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+                        child: ExpansionTile(
+                          title: const CText(
+                            "PROMOTIONS",
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                          ),
+                          trailing: const Icon(
+                            Icons.keyboard_arrow_down,
+                            size: 30,
+                          ),
+                          children: [
+                            Container(
+                              height: 1,
+                              color: Colors.black26,
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 15),
+                              child: Align(
+                                alignment: Alignment.centerLeft,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: const [
+                                    CText(
+                                      "LEEse with PanPac",
+                                      fontSize: 12,
+                                      height: 3,
+                                      letterSpacing: 0.5,
+                                      color: Color(0xff444444),
+                                    ),
+                                    CText(
+                                      "Always on Promotions",
+                                      fontSize: 12,
+                                      height: 3,
+                                      letterSpacing: 0.5,
+                                      color: Color(0xff444444),
+                                    ),
+                                    SizedBox(height: 6),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 15),
+                        child: Container(
+                          height: 1,
+                          color: Colors.black26,
+                        ),
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.only(left: 20),
+                        child: CText(
+                          "SERVICING",
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 15),
+                        child: Container(
+                          height: 1,
+                          color: Colors.black26,
+                        ),
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.only(left: 20),
+                        child: CText(
+                          "ABOUT",
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 15),
+                        child: Container(
+                          height: 1,
+                          color: Colors.black26,
+                        ),
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.only(left: 20),
+                        child: CText(
+                          "BLOG",
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 15),
+                        child: Container(
+                          height: 1,
+                          color: Colors.black26,
+                        ),
+                      ),
+                      Theme(
+                        data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+                        child: ExpansionTile(
+                          title: const CText(
+                            "CONTACT",
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                          ),
+                          trailing: const Icon(
+                            Icons.keyboard_arrow_down,
+                            size: 30,
+                          ),
+                          children: [
+                            Container(
+                              height: 1,
+                              color: Colors.black26,
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 15),
+                              child: Align(
+                                alignment: Alignment.centerLeft,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: const [
+                                    CText(
+                                      "Request Quote",
+                                      fontSize: 12,
+                                      height: 3,
+                                      // letterSpacing: 0.5,
+                                      color: Color(0xff444444),
+                                    ),
+                                    CText(
+                                      "Careers",
+                                      fontSize: 12,
+                                      height: 3,
+                                      letterSpacing: 0.5,
+                                      color: Color(0xff444444),
+                                    ),
+                                    // SizedBox(height: 6)
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 1),
+                        child: Container(
+                          height: 1,
+                          color: Colors.black26,
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              : SizedBox(),
+        ),
+      ],
+    );
+  }
+
+  _headerColumnTablet() {
+    return Padding(
+      padding: const EdgeInsets.only(left: 40),
+      child: Responsive.isMobile(context)
+          ? Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const SizedBox(height: 60),
+                CText(
+                  "Commercial Vehicle Leasing",
+                  fontSize: Responsive.isMobile(context) ? 25 : 50,
+                  color: Color(0xff3c88bb),
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 1,
+                ),
+                const SizedBox(height: 30),
+                CText(
+                  "Short and long term commercial vehicle leasing\n"
+                  "from one of the leading leasing companies\n"
+                  "in Singapore.",
+                  fontSize: Responsive.isMobile(context) ? 15 : 30,
+                  color: Colors.black.withOpacity(0.6),
+                  // fontWeight: FontWeight.w,
+                  letterSpacing: 1,
+                ),
+                const SizedBox(height: 30),
+                Container(
+                  alignment: Alignment.center,
+                  height: 50,
+                  width: 165,
+                  decoration: BoxDecoration(
+                    color: Color(0xff3c88bb),
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                  child: const CText(
+                    "Request Quote",
+                    fontSize: 14,
+                    color: Colors.white,
+                    letterSpacing: 1.5,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            )
+          : Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 60),
+                const CText(
+                  "Commercial Vehicle Leasing",
+                  fontSize: 50,
+                  color: Color(0xff3c88bb),
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 1,
+                ),
+                const SizedBox(height: 30),
+                CText(
+                  "Short and long term commercial vehicle leasing\n"
+                  "from one of the leading leasing companies\n"
+                  "in Singapore.",
+                  fontSize: 30,
+                  color: Colors.black.withOpacity(0.6),
+                  // fontWeight: FontWeight.w,
+                  letterSpacing: 1,
+                ),
+                const SizedBox(height: 30),
+                Container(
+                  alignment: Alignment.center,
+                  height: 50,
+                  width: 165,
+                  decoration: BoxDecoration(
+                    color: Color(0xff3c88bb),
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                  child: const CText(
+                    "Request Quote",
+                    fontSize: 14,
+                    color: Colors.white,
+                    letterSpacing: 1.5,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
+    );
+  }
+
+  ///   ----------- mobile ------------
+  _officialLeasingAndTradePartnerMobile() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const SizedBox(height: 30),
+        RichText(
+          text: const TextSpan(
+              text: 'Pan Pacific Van & Truck Leasing offer a selection of top quality',
+              style: TextStyle(
+                color: Colors.black,
+                height: 1.5,
+                // fontWeight: FontWeight.bold,
+                fontSize: 17,
+              ),
+              children: [
+                TextSpan(
+                    text: ' commercial vans & lorries',
+                    style: TextStyle(
+                      height: 1.5,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 17,
+                    ))
+              ]),
+        ),
+        const CText(
+          "as part of our extensive rental fleet. With vehicles of all different sizes, shapes and of\n"
+          "varying powers, you can select the perfect vehicle for your needs. All of our vehicles are",
+          color: Colors.black,
+          height: 1.5,
+
+          // fontWeight: FontWeight.bold,
+          fontSize: 17,
+        ),
+        RichText(
+          text: const TextSpan(
+              text: 'well maintained, and we offer',
+              style: TextStyle(
+                height: 1.5,
+
+                color: Colors.black,
+                // fontWeight: FontWeight.bold,
+                fontSize: 17,
+              ),
+              children: [
+                TextSpan(
+                    text: ' short, mid and long term rental',
+                    style: TextStyle(
+                      height: 1.5,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 17,
+                    )),
+                TextSpan(
+                  text: ' options for both',
+                  style: TextStyle(
+                    color: Colors.black,
+                    height: 1.5,
+
+                    // fontWeight: FontWeight.bold,
+                    fontSize: 17,
+                  ),
+                ),
+              ]),
+        ),
+        const CText(
+          "individuals and companies.",
+          color: Colors.black,
+          height: 1.5,
+          fontWeight: FontWeight.bold,
+          fontSize: 17,
+        ),
+        const SizedBox(height: 30),
+        const CText(
+          "Official leasing and trade-in partner",
+          color: Colors.black,
+          fontWeight: FontWeight.bold,
+          fontSize: 18,
+        ),
+        const SizedBox(height: 20),
+        Image.asset(Images.borneo),
+        const SizedBox(height: 30),
+        const CText(
+          "Vehicle images below are for representation only. We offer customisation services, and\n"
+          "lorries can come in various configurations, such as tailgate, canopy and box. Please review\n"
+          "our vehicles below for more information, and get in touch should you have any questions.",
+          color: Colors.black,
+          height: 1.5,
+          // fontWeight: FontWeight.bold,
+          fontSize: 17,
+        ),
+        const SizedBox(height: 30),
+        const CText(
+          "Official trade-in partner",
+          color: Colors.black,
+          fontWeight: FontWeight.bold,
+          fontSize: 18,
+        ),
+        const SizedBox(height: 15),
+        Image.asset(Images.tanchong, width: 80),
+        const SizedBox(height: 30),
+      ],
+    );
+  }
+
+  _selectVanMobile() {
+    return Column(
+      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        _selectVanContainer(
+          "Toyota Hiace",
+          "Diesel",
+          "Cargo Van",
+          Images.toyota,
+        ),
+        SizedBox(height: 30),
+        _selectVanContainer(
+          "Nissan NV350",
+          "Petrol/Diese",
+          "Cargo Van",
+          Images.nissan,
+        ),
+        SizedBox(height: 30),
+        _selectVanContainer(
+          "Nissan NV200",
+          "Petrol/Diese",
+          "Light &\nCompact",
+          Images.nissan200,
+        ),
+      ],
+    );
+  }
+
+  _selectTruckMobile() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        _selectTruckContainer(
+          "Toyota Dyna",
+          "Diesel",
+          "10ft Truck",
+          "Manual",
+          Images.toyotaT,
+        ),
+        SizedBox(height: 30),
+        _selectTruckContainer(
+          "Hino 300 Series",
+          "Diese",
+          "14ft Truck",
+          "Manual",
+          Images.nissanT,
+        ),
+        SizedBox(height: 30),
+        _selectTruckContainer(
+          "Nissan Cabstar",
+          "Petrol/Diese",
+          "10ft Truck",
+          "Automatic /\nManual",
+          Images.nissanT,
+        ),
+      ],
     );
   }
 }
